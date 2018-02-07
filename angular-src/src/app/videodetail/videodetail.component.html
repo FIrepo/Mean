@@ -1,0 +1,52 @@
+
+<div *ngIf='!video && !errorStr'>Loading</div>
+<div *ngIf='errorStr' class='text-center'><h1>{{ errorStr }}</h1></div>
+<div *ngIf='video'>
+    <h1 style="text-align: center;">{{ video.name }}</h1>
+    <hr/>
+        <div class="video" style="margin-top: -40px; margin-left: 120px;" >  
+    		<video width="920" height="520" controls (click)="toggleVideo()" #videoPlayer>
+        		<source src="../../assets/{{video.image}}" type="video/mp4" />
+   			 </video>
+   		 </div>
+
+</div>
+
+
+
+
+<h3>Add Comments</h3>
+
+<form (submit)="comment()">
+  <fieldset>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email" value=""
+      id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Comment</label>
+      <textarea class="form-control" name="comment" [(ngModel)]="Comment" id="comment" placeholder="Comment" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Add Comment</button>
+  </fieldset>
+</form>
+
+<hr>
+
+<div class="container">			
+	<div *ngIf='video'>
+		<div *ngFor='let abc of video.comments'>
+			<div class="row">
+				<div class="col-sm-12">
+					<li class="lead">{{abc.commentby}}</li>
+						<h5 style="margin-left: 50px;">{{abc.comment}}</h5>
+
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div>	
+		<hr>
+	</div>
+
+</div><!-- /container -->

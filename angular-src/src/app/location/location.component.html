@@ -1,0 +1,44 @@
+<h2 class="page-header">Location</h2>
+<form (submit)="onLocationSubmit()">
+  <div class="form-group">
+    <label>Location</label>
+    <input type="text" class="form-control" [(ngModel)]="location" name="location" placeholder="Search Location......">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Location">
+</form>
+
+
+<hr>
+<div class="container">
+	<div class="row">
+		<div *ngIf='address'>
+			 <ul  class="list-group">
+			        <li class="list-group-item">{{address}}</li>
+			  </ul>
+		</div>
+	</div>
+	<div class="row">
+		<div *ngIf='address_component'>	
+
+			<ul *ngFor='let abc of address_component'  class="list-group">
+			
+				<li class="list-group-item"><strong>{{abc.types[0]}}</strong>: {{abc.long_name}}</li>
+
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<ul class="list-group" *ngIf='geometry'>
+            <li class="list-group-item"><strong>Latitude</strong>: {{geometry.location.lat}}</li>
+            <li class="list-group-item"><strong>Longitude</strong>: {{geometry.location.lng}}</li>
+          </ul>
+		
+
+
+	</div>
+
+
+</div>
